@@ -13,9 +13,9 @@
                 <inertia ixx="${mass_wheel/12*((3*radius_wheel*radius_wheel+length_wheel*length_wheel))}" 
                 ixy="0.0" 
                 ixz="0.0" 
-                iyy="${mass_wheel/12*((3*radius_wheel*radius_wheel+length_wheel*length_wheel))" 
-                iyz="0.0" i
-                zz="${6*radius_wheel*radius_wheel}"
+                iyy="${mass_wheel/12*((3*radius_wheel*radius_wheel+length_wheel*length_wheel))}" 
+                iyz="0.0"
+                izz="${6*radius_wheel*radius_wheel}"
                 />
             </inertial>
             <visual name="">

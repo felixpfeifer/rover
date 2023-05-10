@@ -4,7 +4,11 @@
     <xacro:include filename="wheel.xacro"/>
 
     <!--Defines-->
-
+    <!--Wheel Link Definition-->
+    <xacro:wheel side="left" front="front"/>
+    <xacro:wheel side="left" front="back"/>
+    <xacro:wheel side="right" front="front"/>
+    <xacro:wheel side="right" front="back"/>
 
     <!--Joint Definition-->
     <link name="base_link"></link>
@@ -194,9 +198,5 @@
         </collision>
     </link>
 
-    <!--Wheel Link Definition-->
-    <xacro:wheel side="left" front="front"/>
-    <xacro:wheel side="left" front="back"/>
-    <xacro:wheel side="right" front="front"/>
-    <xacro:wheel side="right" front="back"/>
+
 </robot>
