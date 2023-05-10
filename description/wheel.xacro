@@ -10,7 +10,13 @@
             <inertial>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <mass value="${mass_wheel}"/>
-                <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+                <inertia ixx="${mass_wheel/12*((3*radius_wheel*radius_wheel+length_wheel*length_wheel))}" 
+                ixy="0.0" 
+                ixz="0.0" 
+                iyy="${mass_wheel/12*((3*radius_wheel*radius_wheel+length_wheel*length_wheel))" 
+                iyz="0.0" i
+                zz="${6*radius_wheel*radius_wheel}"
+                />
             </inertial>
             <visual name="">
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
