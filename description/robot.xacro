@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
 
-    <!--Defines-->
+    <xacro:include filename="wheel.xacro"/>
 
-    <xacro:property name="length_wheel" value="0.04"/>
-    <xacro:property name="radius_wheel" value="0.07"/>
+    <!--Defines-->
 
 
     <!--Joint Definition-->
@@ -196,97 +195,8 @@
     </link>
 
     <!--Wheel Link Definition-->
-    <link name="wheel_left_front_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-        </inertial>
-        <visual name="">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                 <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 0.0 0.0 1.0"/>
-                <texture filename=""/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                 <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
-            </geometry>
-        </collision>
-    </link>
-    <link name="wheel_left_back_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-        </inertial>
-        <visual name="">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                  <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 0.0 0.0 1.0"/>
-                <texture filename=""/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                  <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
-            </geometry>
-        </collision>
-    </link>
-    <link name="wheel_right_front_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-        </inertial>
-        <visual name="">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                 <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 0.0 0.0 1.0"/>
-                <texture filename=""/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                 <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
-            </geometry>
-        </collision>
-    </link>
-    <link name="wheel_right_back_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-        </inertial>
-        <visual name="">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 0.0 0.0 1.0"/>
-                <texture filename=""/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
-            </geometry>
-        </collision>
-    </link>
-
+    <xacro:wheel side="left" front="front"/>
+    <xacro:wheel side="left" front="back"/>
+    <xacro:wheel side="right" front="front"/>
+    <xacro:wheel side="right" front="back"/>
 </robot>
