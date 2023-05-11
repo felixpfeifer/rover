@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+
+    <xacro:property name="length_wheel" value="0.04"/>
+    <xacro:property name="radius_wheel" value="0.07"/>
+    <xacro:property name="mass_wheel" value="1"/>
+
+    <xacro:macro name="wheel" params="side front">
+        <link name="wheel_${side}_${front}_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="${mass_wheel}"/>
+                <inertia ixx="${mass_wheel/12*((3*radius_wheel*radius_wheel+length_wheel*length_wheel))}" 
+                ixy="0.0" 
+                ixz="0.0" 
+                iyy="${mass_wheel/12*((3*radius_wheel*radius_wheel+length_wheel*length_wheel))}" 
+                iyz="0.0"
+                izz="${6*radius_wheel*radius_wheel}"
+                />
+            </inertial>
+            <visual name="">
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+                <material name="">
+                    <color rgba="1.0 0.0 0.0 1.0"/>
+                    <texture filename=""/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+
+    
+</robot>
