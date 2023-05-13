@@ -7,35 +7,23 @@
 
     <xacro:macro name="wheel" params="side front">
         <link name="wheel_${side}_${front}_link">
-            <inertial>
-                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <mass value="${mass_wheel}"/>
-                <inertia ixx="${mass_wheel/12*((3*radius_wheel*radius_wheel+length_wheel*length_wheel))}" 
-                ixy="0.0" 
-                ixz="0.0" 
-                iyy="${mass_wheel/12*((3*radius_wheel*radius_wheel+length_wheel*length_wheel))}" 
-                iyz="0.0"
-                izz="${6*radius_wheel*radius_wheel}"
-                />
-            </inertial>
-            <visual name="">
+            <xacro:inertial_cylinder mass="10" x="0.6" y="0.3" z="0.2">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_cylinder>
+            <visual>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <geometry>
                     <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
                 </geometry>
-                <material name="">
-                    <color rgba="1.0 0.0 0.0 1.0"/>
-                    <texture filename=""/>
-                </material>
+                <material name="blue"/>
             </visual>
             <collision>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <geometry>
-                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                    <cylinder radius="${radius_wheel+0.1}" length="${length_wheel+0.1}"/>
                 </geometry>
             </collision>
         </link>
     </xacro:macro>
 
-    
 </robot>
