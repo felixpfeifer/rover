@@ -1,25 +1,196 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+    
+    <xacro:include filename="intertia.xacro"/>
+    <xacro:include filename="color.xacro"/>
+    
+    <xacro:property name="length_wheel" value="0.04"/>
+    <xacro:property name="radius_wheel" value="0.07"/>
+    <xacro:property name="mass_wheel" value="1"/>
 
-    <xacro:include filename="wheel.xacro"/>
 
     <!--Defines-->
     <!--Wheel Link Definition-->
-    <xacro:wheel side="left" front="front"/>
-    <xacro:wheel side="left" front="back"/>
-    <xacro:wheel side="right" front="front"/>
-    <xacro:wheel side="right" front="back"/>
+    <link name="wheel_left_front_link">
+            <xacro:inertial_cylinder mass="1" length="0.04" radius="0.07">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_cylinder>
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+                <material name="blue"/>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+            </collision>
+        </link>
+    <link name="wheel_left_back_link">
+            <xacro:inertial_cylinder mass="1" length="0.04" radius="0.07">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_cylinder>
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+                <material name="blue"/>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+            </collision>
+        </link>
+    <link name="wheel_right_front_link">
+            <xacro:inertial_cylinder mass="1" length="0.04" radius="0.07">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_cylinder>
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+                <material name="blue"/>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+            </collision>
+        </link>
+    <link name="wheel_right_back_link">
+            <xacro:inertial_cylinder mass="1" length="0.04" radius="0.07">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_cylinder>
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+                <material name="blue"/>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+            </collision>
+        </link>
 
     <!--Joint Definition-->
-    <link name="base_link"></link>
 
-    <!--Chasis Definition-->
-    <joint name="base_joint" type="fixed">
-        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-        <parent link="base_link"/>
-        <child link="chasis_link"/>
-  
-    </joint>
+   
+    <link name="chasis_link">
+        <xacro:inertial_box mass="10" x="0.6" y="0.3" z="0.2">
+            <oigin xyz="0.0 0 0.0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+        <visual>
+            <origin xyz="0.0 0.0115 0.0" rpy="0.0 0.0 -1.5708"/>
+            <geometry>
+                <mesh filename="file://$(find rover)/description/stl/Chasis.stl" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.6 0.3 0.2"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="arm_left_front_link">
+           <xacro:inertial_box mass="0.2" x="0.2" y="0.2" z="0.1">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_box>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="file://$(find rover)/description/stl/Arm_left_front.stl" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.5 0.2 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="arm_left_back_link">
+
+            <xacro:inertial_box mass="0.2" x="0.2" y="0.2" z="0.1">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_box>
+        
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="file://$(find rover)/description/stl/Arm_left_back.stl" scale="0.1 0.1 0.1"/>
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.5 0.2 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <link name="arm_right_front_link">
+
+           <xacro:inertial_box mass="0.2" x="0.2" y="0.2" z="0.1">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_box>
+        
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="file://$(find rover)/description/stl/Arm_right_front.stl" scale="0.1 0.1 0.1"/>
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.5 0.2 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="arm_right_back_link">
+
+           <xacro:inertial_box mass="0.2" x="0.2" y="0.2" z="0.1">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_box>
+        
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="file://$(find rover)/description/stl/Arm_right_back.stl" scale="0.1 0.1 0.1"/>
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.5 0.2 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+     <!--Chasis Definition-->
+
 
     <joint name="arm_left_front_joint" type="fixed">
         <origin xyz="-0.15 -0.0955 0.1" rpy="0.0 0.0 -1.5708"/>
@@ -76,127 +247,6 @@
     </joint>
     
     <!--Link Definition-->
-
-    <link name="chasis_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="20.0"/>
-            <inertia ixx="${0.3}" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-             
-        </inertial>
-        <visual name="">
-            <origin xyz="0.0 0.0115 0.0" rpy="0.0 0.0 -1.5708"/>
-            <geometry>
-                <mesh filename="file://$(find rover)/description/stl/Chasis.stl" scale="0.01 0.01 0.01"/>/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 0.0 0.0 1.0"/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <box size="0.6 0.3 0.2"/>
-            </geometry>
-        </collision>
-    </link>
-
-    <link name="arm_left_front_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.010653" ixy=" 0.001298" ixz="-0.000756" iyy="-0.000756" iyz="-0.000756" izz="-0.000756"/>
-        </inertial>
-        <visual name="">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <mesh filename="file://$(find rover)/description/stl/Arm_left_front.stl" scale="0.01 0.01 0.01"/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 0.0 0.0 1.0"/>
-                <texture filename=""/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <box size="0.0 0.0 0.0"/>
-            </geometry>
-        </collision>
-    </link>
-
-    <link name="arm_left_back_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-             <inertia ixx="0.010653" ixy=" 0.001298" ixz="-0.000756" iyy="-0.000756" iyz="-0.000756" izz="-0.000756"/>
-        </inertial>
-        <visual name="">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <mesh filename="file://$(find rover)/description/stl/Arm_left_back.stl" scale="0.1 0.1 0.1"/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 0.0 0.0 1.0"/>
-                <texture filename=""/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <box size="0.0 0.0 0.0"/>
-            </geometry>
-        </collision>
-    </link>
-
-
-    <link name="arm_right_front_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.010653" ixy=" 0.001298" ixz="-0.000756" iyy="-0.000756" iyz="-0.000756" izz="-0.000756"/>
-        </inertial>
-        <visual name="">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <mesh filename="file://$(find rover)/description/stl/Arm_right_front.stl" scale="0.1 0.1 0.1"/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 0.0 0.0 1.0"/>
-                <texture filename=""/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <box size="0.0 0.0 0.0"/>
-            </geometry>
-        </collision>
-    </link>
-
-    <link name="arm_right_back_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.010653" ixy=" 0.001298" ixz="-0.000756" iyy="-0.000756" iyz="-0.000756" izz="-0.000756"/>
-        </inertial>
-        <visual name="">
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <mesh filename="file://$(find rover)/description/stl/Arm_right_back.stl" scale="0.1 0.1 0.1"/>
-            </geometry>
-            <material name="">
-                <color rgba="1.0 0.0 0.0 1.0"/>
-                <texture filename=""/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <box size="0.0 0.0 0.0"/>
-            </geometry>
-        </collision>
-    </link>
 
 
 </robot>
