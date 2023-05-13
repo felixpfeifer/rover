@@ -40,14 +40,9 @@ def generate_launch_description():
 
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                     arguments=['-topic', 'robot_description',
-                                '-entity', 'rover'],
+                                '-entity', 'my_bot'],
                     output='screen')
 
-
-    joint_state_publisher_gui_node = Node( package="joint_state_publisher_gui", 
-                                                             executable="joint_state_publisher_gui", 
-                                                             name="joint_state_publisher_gui"
-                                                            )
 
 
 
@@ -57,8 +52,5 @@ def generate_launch_description():
     return LaunchDescription([
         gazebo,
         node_robot_state_publisher,
-        joint_state_publisher_gui_node,
         spawn_entity
     ])
-
-

@@ -8,6 +8,8 @@
     <xacro:property name="radius_wheel" value="0.07"/>
     <xacro:property name="mass_wheel" value="1"/>
 
+    <link name="base_link">
+    </link>
 
     <!--Defines-->
     <!--Wheel Link Definition-->
@@ -46,7 +48,7 @@
                     <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
                 </geometry>
             </collision>
-        </link>
+    </link>
     <link name="wheel_right_front_link">
             <xacro:inertial_cylinder mass="1" length="0.04" radius="0.07">
                 <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
@@ -99,7 +101,7 @@
             <material name="white"/>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.2" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <box size="0.6 0.3 0.2"/>
             </geometry>
@@ -120,7 +122,7 @@
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.5 0.2 0.1"/>
+                <box size="0.2 0.2 0.1"/>
             </geometry>
         </collision>
     </link>
@@ -141,7 +143,7 @@
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.5 0.2 0.1"/>
+                <box size="0.2 0.2 0.1"/>
             </geometry>
         </collision>
     </link>
@@ -163,7 +165,7 @@
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.5 0.2 0.1"/>
+                <box size="0.2 0.2 0.1"/>
             </geometry>
         </collision>
     </link>
@@ -184,13 +186,18 @@
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.5 0.2 0.1"/>
+                <box size="0.2 0.2 0.1"/>
             </geometry>
         </collision>
     </link>
 
      <!--Chasis Definition-->
-
+    
+    <joint name="base_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="chasis_link"/>
+        </joint>
 
     <joint name="arm_left_front_joint" type="fixed">
         <origin xyz="-0.15 -0.0955 0.1" rpy="0.0 0.0 -1.5708"/>
@@ -239,7 +246,7 @@
         <child link="wheel_right_front_link"/>
         <axis xyz="0.0 0.0 1.0"/>  
     </joint>
-    <joint name="wheel_back_front_joint" type="continuous"> 
+    <joint name="wheel_right_back_joint" type="continuous"> 
         <origin xyz="${0.03+length_wheel/2} -0.067 -0.04 " rpy="3.14 -1.5708 0.0"/>
         <parent link="arm_right_back_link"/>
         <child link="wheel_right_back_link"/>
