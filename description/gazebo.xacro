@@ -1,15 +1,17 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="rover">
+
+
 
         <gazebo>
-              <plugin name='skid_steer_drive' filename='libgazebo_ros_diff_drive.so'>
+          <plugin name='skid_steer_drive' filename='libgazebo_ros_diff_drive.so'>
         <ros>
           <!-- Set namespace -->
           <namespace>/</namespace>
 
           <!-- Remap default topics -->
-          <remapping>cmd_vel:=cmd_demo</remapping>
-          <remapping>odom:=odom_demo</remapping>
+          <remapping>cmd_vel:=cmd_vel</remapping>
+          <remapping>odom:=odom</remapping>
         </ros>
 
         <!-- Update rate -->
@@ -27,25 +29,62 @@
         <right_joint>wheel_right_back_joint</right_joint>
 
         <!-- kinematics -->
-        <wheel_separation>0.25</wheel_separation>
-        <wheel_separation>0.25</wheel_separation>
+        <wheel_separation>0.4</wheel_separation>
+        <wheel_separation>0.4</wheel_separation>
 
         <wheel_diameter>0.14</wheel_diameter>
         <wheel_diameter>0.14</wheel_diameter>
 
         <!-- limits -->
-        <max_wheel_torque>20</max_wheel_torque>
-        <max_wheel_acceleration>1.0</max_wheel_acceleration>
+        <max_wheel_torque>400</max_wheel_torque>
+        <max_wheel_acceleration>2.0</max_wheel_acceleration>
 
         <!-- output -->
         <publish_odom>true</publish_odom>
         <publish_odom_tf>true</publish_odom_tf>
         <publish_wheel_tf>true</publish_wheel_tf>
 
-        <odometry_frame>odom_demo</odometry_frame>
+        <odometry_frame>odom</odometry_frame>
         <robot_base_frame>base_link</robot_base_frame>
 
       </plugin>
 
+    </gazebo>
+
+    <gazebo reference="wheel_left_front_link">
+      <mu1>20</mu1>
+      <mu2>10</mu2>
+      <minDepth>0.0001</minDepth>
+      <kp>100000000</kp>
+      <kd>100</kd>
+      <slip1>1.0</slip1>
+      <slip2>0.0</slip2>
+    </gazebo>
+     <gazebo reference="wheel_left_back_link">
+      <mu1>20</mu1>
+      <mu2>10</mu2>
+      <minDepth>0.0001</minDepth>
+      <kp>100000000</kp>
+      <kd>100</kd>
+      <slip1>1.0</slip1>
+      <slip2>0.0</slip2>
+    </gazebo>
+     <gazebo reference="wheel_right_front_link">
+      <mu1>20</mu1>
+      <mu2>10</mu2>
+      <minDepth>0.0001</minDepth>
+      <kp>100000000</kp>
+      <kd>100</kd>
+      <slip1>1.0</slip1>
+      <slip2>0.0</slip2>
+    </gazebo>
+     <gazebo reference="wheel_right_back_link">
+      <mu1>20</mu1>
+      <mu2>10</mu2>
+      <minDepth>0.0001</minDepth>
+      <kp>100000000</kp>
+      <kd>100</kd>
+      <slip1>1.0</slip1>
+      <slip2>0.0</slip2>
     </gazebo>
 </robot>
