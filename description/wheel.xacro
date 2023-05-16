@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="rover">
+
+    <xacro:property name="length_wheel" value="0.04"/>
+    <xacro:property name="radius_wheel" value="0.07"/>
+    <xacro:property name="mass_wheel" value="1"/>
+
+    <xacro:macro name="wheel" params="side front">
+        <link name="wheel_${side}_${front}_link">
+            <xacro:inertial_cylinder mass="10" x="0.6" y="0.3" z="0.2">
+                <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+            </xacro:inertial_cylinder>
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel}" length="${length_wheel}"/>
+                </geometry>
+                <material name="blue"/>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${radius_wheel+0.1}" length="${length_wheel+0.1}"/>
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+
+</robot>

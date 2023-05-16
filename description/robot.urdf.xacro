@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="rover">
 
-    <!-- Example link -->
     <xacro:include filename="robot.xacro"/>
-</robot>
+    <xacro:include filename="gazebo.xacro"/>
+    </robot>
