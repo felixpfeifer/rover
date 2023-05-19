@@ -3,4 +3,5 @@
 
     <xacro:include filename="robot.xacro"/>
     <xacro:include filename="gazebo.xacro"/>
+    <xacro:include filename="lidar.xacro"/>
     </robot>

@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="rover">
 
-
-
         <gazebo>
           <plugin name='skid_steer_drive' filename='libgazebo_ros_diff_drive.so'>
         <ros>
