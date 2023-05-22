@@ -8,7 +8,7 @@
     </joint>
 
     <link name="laser_frame">
-        <xacro:inertial_cylinder mass="0.1" length="0.0" radius="0.0">
+        <xacro:inertial_cylinder mass="0.1" length="0.0"  radius="0.025">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </xacro:inertial_cylinder>
         <visual name="">
@@ -41,7 +41,7 @@
                 </scan>
                 <range>
                     <min>0.3</min>
-                    <max>4</max>
+                    <max>12</max>
                 </range>
             </ray>
             <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
