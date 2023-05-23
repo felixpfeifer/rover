@@ -13,25 +13,27 @@
         </ros>
 
         <!-- Update rate -->
-        <update_rate>500</update_rate>
+        <update_rate>100</update_rate>
 
         <!-- Number of wheel pairs -->
         <num_wheel_pairs>2</num_wheel_pairs>
+        
+        <!-- wheels1-->
+        <right_joint>wheel_left_back_joint</right_joint>
+        <left_joint>wheel_right_back_joint</left_joint>
 
         <!-- wheels0 -->
-        <left_joint>wheel_left_front_joint</left_joint>
-        <right_joint>wheel_right_front_joint</right_joint>
+        <right_joint>wheel_left_front_joint</right_joint>
+        <left_joint>wheel_right_front_joint</left_joint>
 
-        <!-- wheels1-->
-        <left_joint>wheel_left_back_joint</left_joint>
-        <right_joint>wheel_right_back_joint</right_joint>
+        
 
         <!-- kinematics -->
         <wheel_separation>0.4</wheel_separation>
         <wheel_separation>0.4</wheel_separation>
 
-        <wheel_diameter>0.14</wheel_diameter>
-        <wheel_diameter>0.14</wheel_diameter>
+        <wheel_diameter>0.15</wheel_diameter>
+        <wheel_diameter>0.15</wheel_diameter>
 
         <!-- limits -->
         <max_wheel_torque>400</max_wheel_torque>
